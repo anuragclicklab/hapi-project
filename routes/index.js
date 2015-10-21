@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = [
-    require('./login/login'),
+    require('./login/login')
     
 ];

@@ -17,7 +17,16 @@ var test1 = function (data, callbackRoute) {
 
 
 };
+var register_form = function (data,callbackRoute){
+asyn.waterfall([
 
+],function(error){
+   if(error)
+    return callbackRoute(error);
+    repl
+});
+
+}
 module.exports = {
-    test1: test1
+    test1: test1,register_form:register_form
 }

@@ -4,7 +4,7 @@ var Path = require('path');
 var server = new Hapi.Server();
 var Ejs = require('ejs');
 var mysql = require('mysql');
-server.connection({ port: 3900 });
+server.connection({ port: 6900 });
 server.route({
     method: 'GET',
     path: '/',
@@ -17,14 +17,25 @@ Routes.forEach(function (api) {
     server.route(api);
 });
 
-server.route({
+/*server.route({
     method: 'GET',
-    path: '/{name}',
+    path: '/',
     handler: function (request, reply) {
        //console.log('request.params.name'); 
         reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
     }
-});
+});*/
+
+
+server.route({
+    method:'GET',
+    path:'/helloo',
+    handler: function(request,reply)
+    {
+        console.log("hello world");
+        reply("hello world");
+    }
+})
 var options = {
   views: {
     path: 'templates',

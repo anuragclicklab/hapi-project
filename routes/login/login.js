@@ -15,16 +15,32 @@ var test = {
         }
     }
  }
-/*var test = {
- method: 'GET',
- path: '/login',
- config: {
- handler: function (request, reply) {
- reply("hello wor;d");
- }
 
- }
- };*/
+var register_form = { method:'GET',
+                      path:'/registration',
+                      config:{
+                          description:' New user Registration',
+                          handler: function(request,reply){
+                              reply("asdsadas");
+                              //reply.view('registration.ejs');
+                          }
+                      }
 
-var abc = [test];
+}
+
+var index = {
+    method:'GET',
+    path:'/hello',
+    handler: function(request,reply)
+    {
+        console.log("in hello route");
+        reply("hello world");
+    }
+
+
+}
+
+var abc = [test,
+    register_form,
+    index];
 module.exports = abc;
