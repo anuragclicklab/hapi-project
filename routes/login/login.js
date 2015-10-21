@@ -1,15 +1,30 @@
     controller = require('../../Controllers');
-/*var test = {
-    method: 'PUT',
-    path: '/api/v1/login/test',
+var test = {
+    method: 'GET',
+    path: '/login',
     config: {
         description: 'Logout service provider',
-        tags: ['api', 'serviceProvider'],
         handler: function (request, reply) {
-            controller.login.test1(function (error, success) {
-              
-            });
+            /*controller.login.test1(function (error, success) {
+
+              //reply("anurag");
+            });*/
+            reply("anurag");
+        }
+
+    }
+};
+
+/*var test = {
+    method: 'GET',
+    path: '/login',
+    config: {
+        handler: function (request, reply) {
+         reply("hello wor;d");
         }
 
     }
 };*/
+
+var abc=[test];
+module.exports=abc;
