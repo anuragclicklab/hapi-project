@@ -4,7 +4,7 @@ var Path = require('path');
 var server = new Hapi.Server();
 var Ejs = require('ejs');
 var mysql = require('mysql');
-server.connection({ port: 5000 });
+server.connection({ port: 3900 });
 server.route({
     method: 'GET',
     path: '/',
@@ -41,13 +41,17 @@ var db_config = {
     password: "",
     database: "hapi",
     multipleStatements: true
-};
+};   //sss
 connection = mysql.createConnection(db_config);
 connection.connect(function(err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }});
+        if (err) {
+            console.error('error connecting: ' + err.stack);
+            return;
+        }
+    }
+);
+
+
 
 server.start(function () {
     console.log('Server running at:', server.info.uri);
