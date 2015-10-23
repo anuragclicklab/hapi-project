@@ -1,10 +1,43 @@
 var Hapi = require('hapi');
 var Routes = require('./routes');
 var Path = require('path');
-var server = new Hapi.Server();
+//var Inert = require('inert');
 var Ejs = require('ejs');
 var mysql = require('mysql');
-server.connection({ port: 6900 });
+var server = new Hapi.Server();
+var Plugins = require('./plugins');
+//server.register(Inert);
+server.connection({ port: 6500 });
+
+server.register(Plugins, function (err) {
+    if (err) {
+        server.error('Error while loading plugins : ' + err)
+    } else {
+        server.log('info', 'Plugins Loaded')
+    }
+    /**
+     * Start Server
+     **/
+
+});
+
+/*
+ server.register(require('vision'), function (err) {
+     server.views({
+     engines: {
+     ejs: require('ejs')
+     },
+     relativeTo: Path.join(__dirname, '/view'),
+     path: Path.join(__dirname, '/view')
+     });
+ });
+ server.register(require('inert'), function (err) {
+     if (err) {
+     throw err;
+     }
+ });
+*/
+
 server.route({
     method: 'GET',
     path: '/',
@@ -27,6 +60,8 @@ Routes.forEach(function (api) {
 });*/
 
 
+
+
 server.route({
     method:'GET',
     path:'/helloo',
@@ -35,7 +70,7 @@ server.route({
         console.log("hello world");
         reply("hello world");
     }
-})
+})/*
 var options = {
   views: {
     path: 'templates',
@@ -45,7 +80,8 @@ var options = {
       relativeTo: __dirname,
       path: 'templates'
   }
-}
+}*/
+
 var db_config = {
     host: "localhost",
     user: "root",
@@ -66,4 +102,12 @@ connection.connect(function(err) {
 
 server.start(function () {
     console.log('Server running at:', server.info.uri);
+});
+
+server.views({
+    engines: {
+        ejs: require('handlebars')
+    },
+    relativeTo: __dirname,
+    path: './Views'
 });
